@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -15,17 +15,25 @@ export class UserComponent implements OnInit {
   pageCnt = 1
   pageMaxSize = 3
   static pageNumber = 1
-  page = 1;
-  
+  public userId: number
+  @Input() public parentData;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(
+    /*this.userService.getUsers().subscribe(
       (data: object []) => { this.data = data,
       this.userdata = this.data.data},
       (error) => console.log(error)
+    );*/
+    //console.log(UserComponent.pageNumber)
+  }
+  
+  getUsersById(){
+    this.userService.getUsersById(this.userId).subscribe(
+      (data:any) => {console.log("data is "+ data), this.userdata = data},
+      (error) => console.log(error)
     );
-    console.log(UserComponent.pageNumber)
+    console.log("this is the number",this.userId);
   }
   setPageNumber(){ 
     if(UserComponent.pageNumber == this.pageCnt){
@@ -44,30 +52,11 @@ export class UserComponent implements OnInit {
     this.setPageNumber()
   }
 
-  toggle(){
-    if( this.page == 1){
-        this.page = 2;
-    }else{
-      this.page = 1;
-    }
-    this.loadData()
-  }
+ 
   increment(){
     UserComponent.pageNumber++;
     console.log("incremented " + UserComponent.pageNumber)
     this.setPageNumber()
   }
-  loadData(){
-    console.log("In loadData")
-    this.userService.getUsersByPage(this.page).subscribe(
-      (data: object []) => { this.data = data,console.log(this.data),
-      this.userdata = this.data.data,console.log(this.userdata)},
-      (error) => console.log(error)
-    );
-  }
-
-  paginate(event){
-      this.userdataChunk = this.userdata.slice(event.first, event.first+event.rows)
-  }
-  
+ 
 }

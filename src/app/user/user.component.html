@@ -1,28 +1,16 @@
-<div class="container">
-    <table class="table">
-            <thead class="thead-dark">
-                    <tr>
-                      <th>Id</th>  
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Email</th>
-                      <th>Image</th>
-                    </tr>
-                  </thead>
-           <tr *ngFor="let user of userdata">
-                <td>{{user.id}}</td>  
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.email}}</td>
-                <td>
-                    <img src="{{user.avatar}}"  class="img-thumbnail" alt="pic">
-                </td>         
-        </table>
-        <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" (click)="toggle()">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#" (click)="toggle()">Next</a></li>
-        </ul>
-        <!--<p-dataTable [value]="userdata" [paginator]="true" [rows]="10" [pageLinks]="3" [totalRecords]="totalRecords"
-         [rowsPerPageOptions]="[5,10,20]" (onPageChange)="paginate($event)">
-                </p-dataTable>-->
-</div>
+<form class="form-inline">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter user id" name="userId" [(ngModel)]="userId">
+                <button class="btn btn-success" type="submit" (click)="getUsersById()">Search</button>
+              </form>
+
+
+<!--
+<hr>
+<div class="container" >
+                <div [ngSwitch]="parentData">
+                        <span *ngSwitchCase="'card'"><app-grid></app-grid></span>
+                        <span *ngSwitchCase="'list'"><app-list></app-list></span>
+                        <span *ngSwitchCase="'add'"><app-adduser></app-adduser></span>
+                </div>
+                
+</div>-->

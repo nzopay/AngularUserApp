@@ -1,14 +1,46 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#"><i class="fa fa-users"></i> User Manager</a>
+        <div class="nav-item bg-dark">
+            <a class="nav-link text-white" href="card"> Users</a>
+        </div>
+        <div class="nav-item bg-dark">
+                <a class="nav-link text-white" href="#"> Resources</a>
+        </div>
+        <div class="nav-item bg-dark">
+                <a class="nav-link text-white" href="#"> Services</a>
+        </div>
+        <div class="nav-item bg-dark">
+                <a class="nav-link text-white" href="#"> About Us</a>
+        </div>
+        <app-user></app-user>
+        ...
+      </nav>
 <div class="jumbotron">
     <h1> User App</h1> 
     <p> list of users</p>
 </div>
 <div>
-    <button (click)="loadCardView()"  style='margin-right:16px' class="btn btn-secondary" value="Card View">
+    <!--<button style='margin-right:16px' class="btn btn-secondary" value="Card View" (click)="name='card'">
         <i class="fa-address-book"></i> Card View </button>
-    <button (click)="loadListView()"  style='margin-right:16px' class="btn btn-secondary" value="List View">
+    <button style='margin-right:16px' class="btn btn-secondary" value="List View" (click)="name='list'" >
         <i class="fa fa-align-justify"></i> List View </button>
+    <button style='margin-right:16px' class="btn btn-secondary" value="New User" (click)="name='add'" >
+        <i class="fa fa-plus-square"></i> New User </button>-->
+    <nav>
+        <div style='margin-right:16px' class="btn btn-light" > 
+            <i class="fa fa-address-book"></i><a href="card">Card View </a>
+        </div>
+        <div style='margin-right:16px' class="btn btn-light" > 
+            <i class="fa fa-align-justify"></i><a href="list">List View </a>
+        </div>
+        <div style='margin-right:16px' class="btn btn-light" > 
+            <i class="fa fa-plus-square"></i><a href="add">New User</a>
+        </div>
+    </nav>
 </div>
-<app-user></app-user>
+<!--<app-user [parentData]="name"></app-user>-->
+<hr>
+<router-outlet></router-outlet>
 
 
